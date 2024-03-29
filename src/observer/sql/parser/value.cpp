@@ -40,17 +40,44 @@ AttrType attr_type_from_string(const char *s)
   return UNDEFINED;
 }
 
-void String_to_int(const char *date,int &inData){
-    int len=0;
-    int res=0;
-    while(date[len]!='\0'&&res<=10000000){
-      if(0<=date[len]-'0'&&9>=date[len]-'0'){
-        res*=10;
-        res+=date[len]-'0';
-      }
-      len++;
+void String_to_int(const char* date, int& inData) {
+    int len = 0;
+    int res = 0;
+    int year = 0;
+    int month = 0;
+    int day = 0;
+    int next = 0;
+    while (date[len] != '\0') {
+        if (date[len] == '-') {
+            next++;
+            len++;
+            continue;
+        }
+        if (next == 0) {
+            year *= 10;
+            year += date[len] - '0';
+            len++;
+            continue;
+        }
+        else if (next == 1) {
+            month *= 10;
+            month += date[len] - '0';
+            len++;
+            continue;
+        }
+        else if (next == 2) {
+            day *= 10;
+            day += date[len] - '0';
+            len++;
+            continue;
+        }
+        len += 100000;
     }
-    inData =res;
+    res = year * 100;
+    res += month;
+    res *= 100;
+    res += day;
+    inData = res;
 }
 
 void int_to_String(int intDate,std::string &strDate){
