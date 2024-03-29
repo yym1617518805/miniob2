@@ -161,7 +161,7 @@ void Value::set_date(int val)
   int day=val%100;
 
 
-  if(year<=1969 || year>=2038){
+  if(year<=1969 || year>=2039){
     flag=false;
   }
 
