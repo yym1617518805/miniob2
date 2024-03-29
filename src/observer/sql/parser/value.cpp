@@ -81,16 +81,26 @@ void String_to_int(const char* date, int& inData) {
 }
 
 void int_to_String(int intDate,std::string &strDate){
-    int cur= intDate/10000 ; 
+  int year=0;
+  int month=0;
+  int day=0;
+  int res=0;
+  year= intDate/10000 ; 
+  month=(intDate-year*10000)/100;
+  day=intDate%100;
+    
     std::stringstream ss;
-    ss << cur;
+    ss << year;
     ss<<'-';
-    intDate= intDate%10000;
-    cur= intDate/100;
-    ss << cur;
+    if(month<10){
+      ss<<res;
+    }
+    ss << month;
     ss<<'-';
-    intDate=intDate%100;
-    ss << intDate;
+    if(day<10){
+      ss<<res;
+    }
+    ss << day;
     strDate=ss.str();
 }
 
