@@ -229,9 +229,7 @@ if(flag){
   length_ = sizeof(val);
 }
 else{
-    attr_type_ = UNDEFINED;
-    num_value_.date_value_ = val;
-    length_ = sizeof(0);
+    attr_type_ = CHARS;
 }
 }
 
@@ -439,9 +437,6 @@ int Value::get_date()const{
   switch(attr_type_){
     case DATES:{
         return  num_value_.date_value_;
-    }break;
-    case UNDEFINED:{
-      return 0;
     }break;
     default:{
       LOG_WARN("unknown data type. type=%d", attr_type_);
