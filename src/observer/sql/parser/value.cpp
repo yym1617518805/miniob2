@@ -229,7 +229,9 @@ if(flag){
   length_ = sizeof(val);
 }
 else{
-    attr_type_ = CHARS;
+    attr_type_ = UNDEFINED;
+    num_value_.date_value_ = 0;
+    length_ = sizeof(0);   
 }
 }
 
